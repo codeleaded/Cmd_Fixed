@@ -1,4 +1,15 @@
-#include "C:/Wichtig/System/Static/Library/Fixed.h"
+#if defined __linux__
+#include "/home/codeleaded/System/Static/Library/Fixed.h"
+#elif defined _WINE
+#include "/home/codeleaded/System/Static/Library/Fixed.h"
+#elif defined _WIN32
+#include "F:/home/codeleaded/System/Static/Library/Fixed.h"
+#elif defined(__APPLE__)
+#error "Apple not supported!"
+#else
+#error "Platform not supported!"
+#endif
+
 #include <stdio.h>
 
 int main(int argc, const char *argv[]){
@@ -13,7 +24,7 @@ int main(int argc, const char *argv[]){
     double d3 = Fixed16_ToDouble(f3);
     double d4 = Fixed16_ToDouble(f4);
 
-    printf("%d %d %d %d %f %f %f %f\n",f1,f2,f3,f4,d1,d2,d3,d4);
+    printf("%lf %lf %lf %lf\n",d1,d2,d3,d4);
 
     return 0;
 }
